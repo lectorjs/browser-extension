@@ -8,6 +8,9 @@
     "32": "favicon.png"
   },
   "permissions": ["storage", "contextMenus", "clipboardRead"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
