@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest",
+  "manifest_version": 3,
+  "name": "Lector",
+  "description": "Lector for Chrome - Speed reading and text management tool",
+  "version": "0.0.0",
+  "icons": {
+    "32": "favicon.png"
+  },
+  "permissions": ["storage", "contextMenus", "clipboardRead"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "speed_read_selection": {
+      "description": "Launch Lector to read the selected text",
+      "suggested_key": {
+        "default": "Alt+Shift+L"
+      }
+    },
+    "speed_read_page": {
+      "description": "Launch Lector to read the current web page",
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      }
+    },
+    "save_to_reading_list": {
+      "description": "Save the selected text to Lector's reading list for later",
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      }
+    }
+  }
+}
