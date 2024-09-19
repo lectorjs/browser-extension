@@ -1,8 +1,20 @@
 <script>
-    import { Button } from "$lib/components/ui/button";
+    import { Link } from "$lib/components/link";
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1 class="text-xl">Pages</h1>
 
-<Button>click me</Button>
+<ul class="list-inside list-disc text-sm mt-4 ml-4">
+    <li>
+        <Link href="/welcome">Welcome</Link>
+    </li>
+    <li>
+        <Link href="/popup">Popup</Link>
+    </li>
+    <li>
+        <Link href="/options">Options</Link>
+    </li>
+    <li>
+        <Link href="/reader">Reader</Link>
+    </li>
+</ul>

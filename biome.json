@@ -13,6 +13,9 @@
             "noUndeclaredVariables": "off",
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
+          },
+          "style": {
+            "useImportType": "off"
           }
         }
       }
