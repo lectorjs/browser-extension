@@ -1,0 +1,4 @@
+.bg-radial {
+  background-image: radial-gradient(theme("colors.truegray.500"), 1px, transparent 1px);
+  background-size: 10px 10px;
+}

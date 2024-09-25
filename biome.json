@@ -15,7 +15,9 @@
             "noUnusedImports": "off"
           },
           "style": {
-            "useImportType": "off"
+            "noNamespaceImport": "off",
+            "useImportType": "off",
+            "useConst": "off"
           }
         }
       }

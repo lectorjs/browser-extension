@@ -1,5 +1,7 @@
 @import url("./styles/themes/lector.css");
 
+@import url("./styles/backgrounds/bg-radial.css");
+
 * {
   @apply border-border;
 }

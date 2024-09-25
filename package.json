@@ -16,12 +16,15 @@
   },
   "dependencies": {
     "@lectorjs/mode-bionic": "npm:@jsr/lectorjs__mode-bionic@0.0.4",
-    "@lectorjs/mode-rsvp": "npm:@jsr/lectorjs__mode-rsvp@0.0.6",
+    "@lectorjs/mode-rsvp": "npm:@jsr/lectorjs__mode-rsvp@0.0.7",
     "@lectorjs/parser-text": "npm:@jsr/lectorjs__parser-text@0.0.2",
-    "@lectorjs/primitives": "npm:@jsr/lectorjs__primitives@0.0.4",
+    "@lectorjs/primitives": "npm:@jsr/lectorjs__primitives@0.0.5",
     "bits-ui": "^0.21.15",
     "clsx": "^2.1.1",
     "dompurify": "^3.1.6",
+    "mode-watcher": "^0.4.1",
+    "svelte-radix": "^1.1.1",
+    "svelte-sonner": "^0.3.28",
     "tailwind-merge": "^2.5.2",
     "tailwind-variants": "^0.2.1",
     "ufo": "^1.5.4",
@@ -30,24 +33,24 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.2",
     "@changesets/cli": "^2.27.8",
-    "@iconify/json": "^2.2.250",
+    "@iconify/json": "^2.2.252",
     "@jm/biome": "npm:@jsr/jm__biome@0.0.4",
     "@sveltejs/kit": "^2.5.28",
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
-    "@types/bun": "^1.1.9",
+    "@types/bun": "^1.1.10",
     "@types/dompurify": "^3.0.5",
     "@types/webextension-polyfill": "^0.12.1",
     "@unocss/extractor-svelte": "^0.62.4",
-    "lefthook": "^1.7.15",
+    "lefthook": "^1.7.16",
     "prettier": "^3.3.3",
     "prettier-plugin-svelte": "^3.2.6",
-    "svelte": "^5.0.0-next.252",
+    "svelte": "^5.0.0-next.258",
     "svelte-check": "^4.0.2",
     "sveltekit-adapter-chrome-extension": "^2.0.1",
     "typescript": "^5.6.2",
     "unocss": "^0.62.4",
-    "vite": "^5.4.6"
+    "vite": "^5.4.7"
   },
   "trustedDependencies": ["@biomejs/biome", "lefthook"],
-  "packageManager": "bun@1.1.28"
+  "packageManager": "bun@1.1.29"
 }

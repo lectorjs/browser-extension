@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Rsvp } from "./rsvp";
+    import { ModeRsvp } from "$lib/modes/mode-rsvp";
 </script>
 
-<Rsvp />
+<ModeRsvp />

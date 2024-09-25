@@ -3,7 +3,7 @@ import { type VariantProps, tv } from "tailwind-variants";
 import Root from "./button.svelte";
 
 const buttonVariants = tv({
-	base: "focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
+	base: "focus-visible:ring-ring inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 active:scale-95",
 	variants: {
 		variant: {
 			default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow",
@@ -39,12 +39,7 @@ type Props = ButtonPrimitive.Props & {
 type Events = ButtonPrimitive.Events;
 
 export {
-	Root,
-	type Props,
-	type Events,
 	//
-	Root as Button,
-	type Props as ButtonProps,
-	type Events as ButtonEvents,
-	buttonVariants,
+	Root as Button, Root, buttonVariants, type Events as ButtonEvents, type Props as ButtonProps, type Events, type Props
 };
+
