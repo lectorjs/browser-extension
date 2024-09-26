@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && esbuild src/background.ts --bundle --minify --outdir=build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -49,6 +49,7 @@
     "sveltekit-adapter-chrome-extension": "^2.0.1",
     "typescript": "^5.6.2",
     "unocss": "^0.62.4",
+    "unplugin-auto-import": "^0.18.3",
     "vite": "^5.4.7"
   },
   "trustedDependencies": ["@biomejs/biome", "lefthook"],

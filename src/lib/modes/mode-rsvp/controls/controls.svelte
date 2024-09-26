@@ -32,7 +32,7 @@
         "cursor-not-allowed filter-blur-sm": !reader,
     })}
     onmouseenter={() => (modeRsvpStore.isHoveringInteractiveUi = true)}
-    onmouseleave={() => (modeRsvpStore.isHoveringInteractiveUi = true)}
+    onmouseleave={() => (modeRsvpStore.isHoveringInteractiveUi = false)}
 >
     {@render controlsLeft()}
     {@render controlsCenter()}

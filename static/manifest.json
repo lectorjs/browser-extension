@@ -7,9 +7,9 @@
   "icons": {
     "32": "favicon.png"
   },
-  "permissions": ["storage", "contextMenus", "clipboardRead", "clipboardWrite"],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+  "permissions": ["activeTab", "storage", "contextMenus", "clipboardRead", "clipboardWrite"],
+  "background": {
+    "scripts": ["background.js"]
   },
   "action": {
     "default_popup": "popup.html"

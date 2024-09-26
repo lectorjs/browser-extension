@@ -8,6 +8,6 @@
     let { children }: Props = $props();
 </script>
 
-<div class="grid place-items-center">
+<div class="grid place-items-center overflow-hidden">
     {@render children()}
 </div>

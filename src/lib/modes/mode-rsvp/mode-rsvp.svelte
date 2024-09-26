@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Header } from "$lib/components/layout/header/index.ts";
+    import { Header } from "$lib/components/layout/header";
     import { NoBuffer } from "$lib/components/no-buffer";
     import { bufferStore } from "$lib/stores/buffer.svelte.ts";
     import { RsvpMode, context } from "@lectorjs/mode-rsvp";
@@ -13,7 +13,7 @@
 
     let readerDisplay: HTMLDivElement | undefined = $state();
 
-    let reader = $derived.by(() => {
+    const reader = $derived.by(() => {
         const buffer = bufferStore.buffer;
 
         if (readerDisplay) {
@@ -44,13 +44,8 @@
     });
 </script>
 
-<section
-    role="main"
-    class="h-full grid grid-rows-[50px_1fr_70px] bg-primary/05"
->
-    {#if modeRsvpStore.isInteractive}
-        <Header />
-    {/if}
+<main class="h-full grid grid-rows-[50px_1fr_70px] bg-primary/05">
+    <Header />
 
     {#if bufferStore.buffer}
         <Display>
@@ -66,4 +61,4 @@
     {#if modeRsvpStore.isInteractive}
         <Controls {reader} />
     {/if}
-</section>
+</main>

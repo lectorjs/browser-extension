@@ -20,7 +20,7 @@ export class ModeRsvpStore {
                 onActive: () => {
                     this.isIdle = false;
                 },
-            });
+            }).start();
         }
     }
 }

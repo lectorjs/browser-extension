@@ -2,6 +2,7 @@
     import { version } from "$app/environment";
     import { Link } from "$lib/components/link";
     import { Badge } from "$lib/components/ui/badge";
+    import { buttonVariants } from "$lib/components/ui/button";
     import { Separator } from "$lib/components/ui/separator";
     import {
         LECTOR_DONATE_URL,
@@ -10,6 +11,7 @@
         LECTOR_RELEASES_URL,
         LECTOR_WEBSITE_URL,
     } from "$lib/constants";
+    import { cn } from "$lib/utils";
 </script>
 
 <div class="w-[360px] bg-popover border border-border/80 overflow-hidden">
@@ -59,11 +61,14 @@
 
 {#snippet actions()}
     <div class="px-2 py-4 grid gap-3">
-        <Link
-            href="#"
-            isButton
-            variant="secondary"
-            class="w-full justify-between"
+        <button
+            class={cn(buttonVariants({ variant: "secondary" }), "w-full justify-between")}
+            onclick={async () => {
+                await browserExt.windows.create({
+                    url: browserExt.runtime.getURL("reader.html"),
+                    type: "popup",
+                });
+            }}
         >
             <div class="flex items-center gap-3">
                 <div class="i-vscode-icons:default-file size-5"></div>
@@ -71,35 +76,7 @@
             </div>
 
             <div class="i-solar:arrow-right-up-line-duotone text-xl"></div>
-        </Link>
-
-        <Link
-            href="#"
-            isButton
-            variant="secondary"
-            class="w-full justify-between"
-        >
-            <div class="flex items-center gap-3">
-                <div class="i-catppuccin:pdf size-5"></div>
-                Launch PDF reader
-            </div>
-
-            <div class="i-solar:arrow-right-up-line-duotone text-xl"></div>
-        </Link>
-
-        <Link
-            href="#"
-            isButton
-            variant="secondary"
-            class="w-full justify-between"
-        >
-            <div class="flex items-center gap-3">
-                <div class="i-twemoji:green-book size-5"></div>
-                Launch ePUB reader
-            </div>
-
-            <div class="i-solar:arrow-right-up-line-duotone text-xl"></div>
-        </Link>
+        </button>
     </div>
 {/snippet}
 
@@ -142,8 +119,14 @@
             </Link>
         </div>
 
-        <Link href="/options">
+        <button
+            class={cn(buttonVariants({ variant: "secondary", size: "icon" }))}
+            onclick={async () => {
+                await browserExt.runtime.openOptionsPage();
+            }}
+        >
             <div class="i-solar:settings-linear size-5"></div>
-        </Link>
+            <span class="sr-only">Options</span>
+        </button>
     </footer>
 {/snippet}

@@ -5,7 +5,7 @@
     import { LECTOR_WEBSITE_URL } from "$lib/constants";
 </script>
 
-<header class="bg-background border-b px-4">
+<header class="px-4 bg-background border-b">
     <div class="h-full flex items-center justify-between gap-4">
         {@render actionsLeft()}
         {@render actionsRight()}

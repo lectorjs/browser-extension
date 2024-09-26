@@ -25,11 +25,14 @@ export class IdleStore {
 
     constructor(options: IdleStoreOptions) {
         this.#options = options;
+
+        this.handleActivity = this.handleActivity.bind(this);
+        this.resetTimer = this.resetTimer.bind(this);
     }
 
     start() {
         this.#addEventListeners();
-        this.#resetTimer();
+        this.resetTimer();
     }
 
     end() {
@@ -40,16 +43,16 @@ export class IdleStore {
         this.#removeEventListeners();
     }
 
-    #handleActivity() {
+    protected handleActivity() {
         if (this.#isIdle) {
             this.#isIdle = false;
             this.#options.onActive?.();
         }
 
-        this.#resetTimer();
+        this.resetTimer();
     }
 
-    #resetTimer() {
+    protected resetTimer() {
         if (this.#timer) {
             clearTimeout(this.#timer);
         }
@@ -62,13 +65,13 @@ export class IdleStore {
 
     #addEventListeners() {
         for (const event of IDLE_EVENTS) {
-            document.addEventListener(event, this.#handleActivity, { passive: true });
+            document.addEventListener(event, this.handleActivity, { passive: true });
         }
     }
 
     #removeEventListeners() {
         for (const event of IDLE_EVENTS) {
-            document.removeEventListener(event, this.#handleActivity);
+            document.removeEventListener(event, this.handleActivity);
         }
     }
 }

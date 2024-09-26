@@ -5,12 +5,7 @@ import adapter from 'sveltekit-adapter-chrome-extension';
 const config = {
     preprocess: vitePreprocess(),
     kit: {
-        adapter: adapter({
-            pages: 'build',
-            assets: 'build',
-            precompress: false,
-            manifest: 'manifest.json',
-        }),
+        adapter: adapter(),
         appDir: 'app',
         version: {
             name: process.env.npm_package_version,
