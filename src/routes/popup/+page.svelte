@@ -1,8 +1,7 @@
 <script lang="ts">
     import { version } from "$app/environment";
-    import { Link } from "$lib/components/link";
     import { Badge } from "$lib/components/ui/badge";
-    import { buttonVariants } from "$lib/components/ui/button";
+    import { Button, buttonVariants } from "$lib/components/ui/button";
     import { Separator } from "$lib/components/ui/separator";
     import {
         LECTOR_DONATE_URL,
@@ -29,19 +28,19 @@
 
 {#snippet header()}
     <header class="px-2 py-2 flex items-center justify-between">
-        <Link href={LECTOR_WEBSITE_URL}>
+        <Button href={LECTOR_WEBSITE_URL}>
             <img
                 src="/lector-logo-font/svg/logo-no-background.svg"
                 alt="Lector logo"
                 class="w-full h-8 object-contain"
             />
-        </Link>
+        </Button>
 
-        <Link href={LECTOR_RELEASES_URL}>
+        <Button href={LECTOR_RELEASES_URL}>
             <Badge variant="secondary">
                 v{version}
             </Badge>
-        </Link>
+        </Button>
     </header>
 {/snippet}
 
@@ -64,10 +63,10 @@
         <button
             class={cn(buttonVariants({ variant: "secondary" }), "w-full justify-between")}
             onclick={async () => {
-                await browserExt.windows.create({
-                    url: browserExt.runtime.getURL("reader.html"),
-                    type: "popup",
-                });
+                // await browserExt.windows.create({
+                //     url: browserExt.runtime.getURL("reader.html"),
+                //     type: "popup",
+                // });
             }}
         >
             <div class="flex items-center gap-3">
@@ -87,42 +86,46 @@
             Lector is 100% free and open-source, offering barrier-free reading for everyone. Please consider helping us
             maintain this project by making a donation!
         </p>
-        <Link
+        <Button
             href={LECTOR_DONATE_URL}
-            isButton
-            isBlank
+            target="_blank"
+            rel="noopener noreferrer"
             class="gap-1 mt-4 bg-rose-600 hover:bg-rose-600/90 text-white"
         >
             <div class="i-solar:heart-bold size-5"></div>
             Donate
-        </Link>
+        </Button>
     </div>
 {/snippet}
 
 {#snippet footer()}
     <footer class="px-2 py-2 flex items-center justify-between">
         <div class="flex items-center gap-2">
-            <Link
+            <Button
                 href={LECTOR_FEEDBACK_URL}
-                isBlank
+                variant="link"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-xs"
             >
                 Send feedback
-            </Link>
+            </Button>
             ·
-            <Link
+            <Button
                 href={LECTOR_HELP_URL}
-                isBlank
+                variant="link"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-xs"
             >
                 Need help?
-            </Link>
+            </Button>
         </div>
 
         <button
             class={cn(buttonVariants({ variant: "secondary", size: "icon" }))}
             onclick={async () => {
-                await browserExt.runtime.openOptionsPage();
+                // await browserExt.runtime.openOptionsPage();
             }}
         >
             <div class="i-solar:settings-linear size-5"></div>

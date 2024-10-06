@@ -1,8 +1,9 @@
 <script>
-    import { Kbd } from "$lib/components/kbd";
-    import { Link } from "$lib/components/link";
-    import Button from "$lib/components/ui/button/button.svelte";
-    import { LECTOR_WEBSITE_URL } from "$lib/constants";
+    import { LectorLibrary } from "$lib/components/lector-library";
+    import { Button } from "$lib/components/ui/button";
+    import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+    import { LECTOR_DONATE_URL, LECTOR_WEBSITE_URL } from "$lib/constants";
+    import { resetMode, setMode } from "mode-watcher";
 </script>
 
 <header class="px-4 bg-background border-b">
@@ -14,47 +15,52 @@
 
 {#snippet actionsLeft()}
     <div class="flex items-center gap-2">
-        <Link href={LECTOR_WEBSITE_URL}>
+        <Button
+            href={LECTOR_WEBSITE_URL}
+            variant="link"
+        >
             <img
                 src="/lector-logo-font/svg/logo-no-background.svg"
                 alt="Lector logo"
                 class="w-full h-7 object-contain"
             />
-        </Link>
+        </Button>
     </div>
 {/snippet}
 
 {#snippet actionsRight()}
     <div class="flex items-center gap-2">
         <Button
-            variant="outline"
-            size="sm"
-            class="min-w-[170px] justify-between"
-        >
-            <div class="flex items-center gap-2">
-                <div class="i-carbon:search size-4"></div>
-                Search...
-            </div>
-            <Kbd>
-                <span class="text-xs">⌘</span>
-                K
-            </Kbd>
-        </Button>
-        <Button
             variant="secondary"
             size="sm"
         >
-            <div class="i-carbon:translate size-4"></div>
-            <span class="sr-only sm:not-sr-only">Español</span>
+            <div class="i-emojione:flag-for-united-states size-5"></div>
+            <span class="sr-only sm:not-sr-only">English</span>
         </Button>
+        <DropdownMenu.Root>
+            <DropdownMenu.Trigger
+                asChild
+                let:builder
+            >
+                <Button
+                    builders={[builder]}
+                    variant="secondary"
+                    size="sm"
+                >
+                    <div class="i-solar:pallete-2-linear size-5"></div>
+                    <span class="sr-only sm:not-sr-only">Theme</span>
+                </Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content align="end">
+                <DropdownMenu.Item on:click={() => setMode("light")}>Light</DropdownMenu.Item>
+                <DropdownMenu.Item on:click={() => setMode("dark")}>Dark</DropdownMenu.Item>
+                <DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
+            </DropdownMenu.Content>
+        </DropdownMenu.Root>
         <Button
-            variant="secondary"
-            size="sm"
-        >
-            <div class="i-carbon:color-palette size-4"></div>
-            <span class="sr-only sm:not-sr-only">Theme</span>
-        </Button>
-        <Button
+            href={LECTOR_DONATE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             variant="secondary"
             size="sm"
         >
@@ -64,11 +70,20 @@
             variant="secondary"
             size="sm"
         >
-            <div class="i-carbon:settings size-5"></div>
+            <div class="i-solar:settings-linear size-5"></div>
         </Button>
-        <Button size="sm">
-            <div class="i-carbon:document-add size-4"></div>
-            Import
+        <Button
+            size="sm"
+            variant="outline"
+        >
+            <div class="i-solar:three-squares-bold-duotone size-5"></div>
+            Plugins
         </Button>
+        <LectorLibrary>
+            <Button size="sm">
+                <div class="i-solar:library-line-duotone size-5"></div>
+                Library
+            </Button>
+        </LectorLibrary>
     </div>
 {/snippet}

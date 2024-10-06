@@ -1,20 +1,40 @@
 <script>
-    import { Link } from "$lib/components/link";
+    import { Button } from "$lib/components/ui/button";
 </script>
 
 <h1 class="text-xl">Pages</h1>
 
 <ul class="list-inside list-disc text-sm mt-4 ml-4">
     <li>
-        <Link href="/welcome">Welcome</Link>
+        <Button
+            variant="link"
+            href="/welcome"
+        >
+            Welcome
+        </Button>
     </li>
     <li>
-        <Link href="/popup">Popup</Link>
+        <Button
+            variant="link"
+            href="/popup"
+        >
+            Popup
+        </Button>
     </li>
     <li>
-        <Link href="/options">Options</Link>
+        <Button
+            variant="link"
+            href="/options"
+        >
+            Options
+        </Button>
     </li>
     <li>
-        <Link href="/reader">Reader</Link>
+        <Button
+            variant="link"
+            href="/reader"
+        >
+            Reader
+        </Button>
     </li>
 </ul>

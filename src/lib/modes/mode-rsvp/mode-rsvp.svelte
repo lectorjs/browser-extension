@@ -1,12 +1,14 @@
 <script lang="ts">
     import { Header } from "$lib/components/layout/header";
-    import { NoBuffer } from "$lib/components/no-buffer";
+    import { LectorToolbar } from "$lib/components/lector-toolbar";
+    import { LectorUnbuffered } from "$lib/components/lector-unbuffered";
     import { bufferStore } from "$lib/stores/buffer.svelte.ts";
     import { RsvpMode, context } from "@lectorjs/mode-rsvp";
     import parser from "@lectorjs/parser-text";
     import { createReader } from "@lectorjs/primitives";
     import domPurify from "dompurify";
     import { onMount } from "svelte";
+    import { blur } from "svelte/transition";
     import Controls from "./controls/controls.svelte";
     import Display from "./display/display.svelte";
     import { modeRsvpStore } from "./mode-rsvp.svelte.ts";
@@ -44,21 +46,37 @@
     });
 </script>
 
-<main class="h-full grid grid-rows-[50px_1fr_70px] bg-primary/05">
+<main class="h-full grid grid-rows-[50px_1fr_90px] overflow-x-hidden">
     <Header />
 
     {#if bufferStore.buffer}
         <Display>
+            {#if modeRsvpStore.isInteractive}
+                <div
+                    in:blur
+                    out:blur
+                    class="absolute top-4 left-1/2 -translate-x-1/2"
+                >
+                    <LectorToolbar />
+                </div>
+            {/if}
+
             <div
                 bind:this={readerDisplay}
                 class="text-7xl"
             ></div>
         </Display>
-    {:else}
-        <NoBuffer />
-    {/if}
 
-    {#if modeRsvpStore.isInteractive}
-        <Controls {reader} />
+        {#if modeRsvpStore.isInteractive}
+            <div
+                in:blur
+                out:blur
+                class="contents"
+            >
+                <Controls {reader} />
+            </div>
+        {/if}
+    {:else}
+        <LectorUnbuffered />
     {/if}
 </main>
